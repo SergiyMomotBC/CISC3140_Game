@@ -1,6 +1,9 @@
 package edu.space_shooter;
 
+import edu.space_shooter.engine.*;
+
 import javax.swing.*;
+import java.awt.*;
 
 public final class Game implements Runnable
 {
@@ -49,6 +52,11 @@ public final class Game implements Runnable
             dt = (currentTime - previousTime) / 1.0e9;
             previousTime = currentTime;
 
+
+            edu.space_shooter.engine.Renderer r = Engine.getRenderer();
+            r.prepareFrame();
+            r.renderText("hello world", new Point(200, 200), 48, Color.BLUE);
+            r.presentFrame();
             //sceneManager.runFrame(dt);
 
             if(dt < 1.0/TARGET_FPS)
