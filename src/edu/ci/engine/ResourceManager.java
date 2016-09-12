@@ -1,4 +1,4 @@
-package edu.space_shooter.engine;
+package edu.ci.engine;
 
 import javax.imageio.ImageIO;
 import javax.sound.sampled.*;

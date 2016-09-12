@@ -1,4 +1,4 @@
-package edu.space_shooter;
+package edu.ci;
 
 import javax.swing.SwingUtilities;
 

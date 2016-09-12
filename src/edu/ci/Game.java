@@ -1,9 +1,6 @@
-package edu.space_shooter;
-
-import edu.space_shooter.engine.*;
+package edu.ci;
 
 import javax.swing.*;
-import java.awt.*;
 
 public final class Game implements Runnable
 {
@@ -15,6 +12,11 @@ public final class Game implements Runnable
             uniqueInstance.sceneManager.pushScene(newScene);
         else
             uniqueInstance.sceneManager.changeToScene(newScene);
+    }
+
+    public static void exit()
+    {
+        uniqueInstance.terminate();
     }
 
     public Game(String[] args)
@@ -34,6 +36,8 @@ public final class Game implements Runnable
 
         delegate.initialize(mainWindow);
 
+        sceneManager = new SceneManager(null);
+
         mainThread = new Thread(this);
         mainThread.start();
     }
@@ -52,12 +56,7 @@ public final class Game implements Runnable
             dt = (currentTime - previousTime) / 1.0e9;
             previousTime = currentTime;
 
-
-            edu.space_shooter.engine.Renderer r = Engine.getRenderer();
-            r.prepareFrame();
-            r.renderText("hello world", new Point(200, 200), 48, Color.BLUE);
-            r.presentFrame();
-            //sceneManager.runFrame(dt);
+            sceneManager.runFrame(dt);
 
             if(dt < 1.0/TARGET_FPS)
                 try {
@@ -79,7 +78,6 @@ public final class Game implements Runnable
         }
     }
 
-    //data members
     private GameDelegate    delegate;
     private Thread          mainThread;
     private JFrame          mainWindow;

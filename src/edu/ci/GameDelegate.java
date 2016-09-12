@@ -1,6 +1,6 @@
-package edu.space_shooter;
+package edu.ci;
 
-import edu.space_shooter.engine.Engine;
+import edu.ci.engine.Engine;
 
 import javax.swing.*;
 import java.awt.*;
@@ -42,7 +42,7 @@ public final class GameDelegate
         });
 
         //enable fullcreen mode
-        GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().setFullScreenWindow(window);
+        //GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().setFullScreenWindow(window);
 
         //create an empty mouse cursor image to hide cursor
         BufferedImage cursorImg = new BufferedImage(16, 16, BufferedImage.TYPE_INT_ARGB);
