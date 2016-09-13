@@ -19,7 +19,7 @@ public final class GameDelegate
 
     public void initialize(JFrame window)
     {
-        Engine.start(window, "");
+        Engine.start(window, "assets/");
     }
 
     public void deinitialize() {}

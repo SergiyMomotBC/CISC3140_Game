@@ -6,7 +6,7 @@ import java.awt.event.KeyListener;
 
 public final class InputHandler implements KeyListener
 {
-    private static int NUMBER_OF_KEYS = 128;
+    private static int NUMBER_OF_KEYS = 1000;
 
     public InputHandler(JFrame window)
     {
@@ -55,7 +55,7 @@ public final class InputHandler implements KeyListener
     {
         for(int i = 0; i < NUMBER_OF_KEYS; ++i)
         {
-            if(keyStates[i].current == true)
+            if(keyStates[i].current)
                 keyStates[i].framesPressed++;
             else
                 keyStates[i].framesPressed = 0;
@@ -76,7 +76,7 @@ public final class InputHandler implements KeyListener
         public KeyState()
         {
             current = false;
-            previous = current;
+            previous = false;
             framesPressed = 0;
             event = 0;
         }

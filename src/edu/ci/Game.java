@@ -36,7 +36,7 @@ public final class Game implements Runnable
 
         delegate.initialize(mainWindow);
 
-        sceneManager = new SceneManager(null);
+        sceneManager = new SceneManager(new TestScene());
 
         mainThread = new Thread(this);
         mainThread.start();
@@ -60,7 +60,7 @@ public final class Game implements Runnable
 
             if(dt < 1.0/TARGET_FPS)
                 try {
-                    mainThread.sleep((long)((1.0 / TARGET_FPS - dt) * 1000));
+                    Thread.sleep((long)((1.0 / TARGET_FPS - dt) * 1000));
                 } catch (InterruptedException e) {
                     delegate.reportFatalError("Thread execution error...");
                 }

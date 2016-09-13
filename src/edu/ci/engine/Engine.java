@@ -10,7 +10,7 @@ public final class Engine
         inputHandler = new InputHandler(window);
         renderer = new Renderer(window, new Dimension(1920, 1080));
         resourceManager = new ResourceManager(assetsRootFolder);
-        audioPlayer = new AudioPlayer(1.0);
+        audioPlayer = new AudioPlayer();
     }
 
     public static InputHandler getInputHandler()

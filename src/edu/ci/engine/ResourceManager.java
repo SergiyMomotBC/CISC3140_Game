@@ -21,7 +21,7 @@ public final class ResourceManager
         if(!resources.containsKey(fileName))
             try{
                 resources.put(fileName, new Resource(ImageIO.read(
-                        new File(resourcesFolder + "/images/" + fileName)
+                        new File(resourcesFolder + "images/" + fileName)
                 )));
             } catch (IOException e) {
                 return null;
@@ -36,7 +36,7 @@ public final class ResourceManager
         if (!resources.containsKey(fileName)) {
             try {
                 AudioInputStream ai = AudioSystem.getAudioInputStream(
-                        new File(resourcesFolder + "/sounds/" + fileName)
+                        new File(resourcesFolder + "sounds/" + fileName)
                 );
                 Clip sound = AudioSystem.getClip();
                 sound.open(ai);
