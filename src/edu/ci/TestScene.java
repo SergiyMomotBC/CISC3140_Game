@@ -15,12 +15,18 @@ public class TestScene implements IGameScene
     @Override
     public void onUpdate(double deltaTime) {
         if(Engine.getInputHandler().isKeyPressedOnce(KeyEvent.VK_S))
-            Engine.getAudioPlayer().playRepeated(sound, 3);
+            Engine.getAudioPlayer().playInBackground(sound);
 
         if(Engine.getInputHandler().isKeyPressedOnce(KeyEvent.VK_D)) {
             Engine.getAudioPlayer().setVolumeLevel(0.25);
             System.out.println(Engine.getAudioPlayer().getVolumeLevel());
         }
+
+        if(Engine.getInputHandler().isKeyPressedOnce(KeyEvent.VK_M))
+            Engine.getAudioPlayer().mute();
+
+        if(Engine.getInputHandler().isKeyPressedOnce(KeyEvent.VK_U))
+            Engine.getAudioPlayer().unmute();
     }
 
     @Override
