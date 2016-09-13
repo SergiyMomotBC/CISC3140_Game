@@ -35,7 +35,7 @@ public final class SceneManager
         Engine.getRenderer().prepareFrame();
         if(currentScene != null) {
             currentScene.onUpdate(deltaTime);
-            currentScene.onRender();
+            currentScene.onRender(Engine.getRenderer());
         }
         Engine.getRenderer().presentFrame();
     }

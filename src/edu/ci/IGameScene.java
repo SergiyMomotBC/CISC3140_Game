@@ -1,5 +1,7 @@
 package edu.ci;
 
+import edu.ci.engine.Renderer;
+
 public interface IGameScene
 {
     public void onStart();
@@ -8,7 +10,7 @@ public interface IGameScene
 
     public void onUpdate(double deltaTime);
 
-    public void onRender();
+    public void onRender(Renderer r);
 
     public default void onResume() {};
 

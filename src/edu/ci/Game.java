@@ -1,5 +1,7 @@
 package edu.ci;
 
+import edu.ci.scenes.MainMenuScene;
+
 import javax.swing.*;
 
 public final class Game implements Runnable
@@ -36,7 +38,7 @@ public final class Game implements Runnable
 
         delegate.initialize(mainWindow);
 
-        sceneManager = new SceneManager(new TestScene());
+        sceneManager = new SceneManager(new MainMenuScene());
 
         mainThread = new Thread(this);
         mainThread.start();
@@ -73,6 +75,7 @@ public final class Game implements Runnable
             isRunning = false;
             mainThread.join();
             delegate.deinitialize();
+            System.exit(0);
         } catch (InterruptedException e) {
             delegate.reportFatalError("Thread execution error...");
         }
