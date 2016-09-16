@@ -1,6 +1,5 @@
 package edu.ci.scenes;
 
-import edu.ci.IGameScene;
 import edu.ci.engine.Engine;
 import edu.ci.engine.Renderer;
 import edu.ci.gui.ListMenu;

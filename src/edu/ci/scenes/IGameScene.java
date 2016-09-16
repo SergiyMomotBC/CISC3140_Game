@@ -1,4 +1,4 @@
-package edu.ci;
+package edu.ci.scenes;
 
 import edu.ci.engine.Renderer;
 

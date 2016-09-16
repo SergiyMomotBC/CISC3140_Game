@@ -1,6 +1,5 @@
 package edu.ci.scenes;
 
-import edu.ci.IGameScene;
 import edu.ci.engine.Renderer;
 
 public class GameplayScene implements IGameScene

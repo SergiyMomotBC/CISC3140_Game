@@ -1,5 +1,6 @@
 package edu.ci;
 
+import edu.ci.scenes.IGameScene;
 import edu.ci.scenes.MainMenuScene;
 
 import javax.swing.*;
@@ -38,7 +39,7 @@ public final class Game implements Runnable
 
         delegate.initialize(mainWindow);
 
-        sceneManager = new SceneManager(new MainMenuScene());
+        sceneManager = new SceneManager(new TestScene());
 
         mainThread = new Thread(this);
         mainThread.start();

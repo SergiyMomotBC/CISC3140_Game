@@ -1,6 +1,7 @@
 package edu.ci;
 
 import edu.ci.engine.Engine;
+import edu.ci.scenes.IGameScene;
 
 import java.awt.event.KeyEvent;
 import java.util.Stack;
