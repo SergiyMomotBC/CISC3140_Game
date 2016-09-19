@@ -8,6 +8,7 @@ public final class GameObject
     {
         this.type = type;
         this.components = new ArrayList<>();
+        this.isAlive = true;
     }
 
     public void addComponent(Component component)
@@ -42,6 +43,17 @@ public final class GameObject
         return type;
     }
 
+    public void destroy()
+    {
+        isAlive = false;
+    }
+
+    public boolean shouldBeDestroyed()
+    {
+        return !isAlive;
+    }
+
     private ArrayList<Component>    components;
     private GameObjectType          type;
+    private boolean                 isAlive;
 }

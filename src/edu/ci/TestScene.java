@@ -5,6 +5,7 @@ import edu.ci.engine.Engine;
 import edu.ci.engine.Renderer;
 import edu.ci.scenes.IGameScene;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class TestScene implements IGameScene
 {
@@ -20,17 +21,25 @@ public class TestScene implements IGameScene
         player.addComponent(s);
         player.addComponent(m);
 
+        objects = new ArrayList<>();
+
+        objects.add(player);
+
         sr = new SpriteRendererSystem();
-        is = new InputSystem();
+        is = new InputSystem(objects);
         ms = new MovementSystem();
+        ts = new TransformSystem();
     }
 
     @Override
     public void onUpdate(double deltaTime)
     {
-        is.update(deltaTime, player);
-        ms.update(deltaTime, player);
-        sr.update(deltaTime, player);
+        for(int i = 0; i < objects.size(); i++) {
+            is.update(deltaTime, objects.get(i));
+            ms.update(deltaTime, objects.get(i));
+            ts.update(deltaTime, objects.get(i));
+            sr.update(deltaTime, objects.get(i));
+        }
     }
 
     @Override
@@ -40,8 +49,9 @@ public class TestScene implements IGameScene
     public void onClose() {}
 
     GameObject player;
+    ArrayList<GameObject> objects;
     SpriteRendererSystem sr;
     InputSystem is;
     MovementSystem ms;
-
+    TransformSystem ts;
 }
