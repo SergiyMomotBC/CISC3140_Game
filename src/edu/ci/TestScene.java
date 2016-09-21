@@ -18,7 +18,7 @@ public class TestScene implements IGameScene
 
         spawner.spawnBackground(Engine.getResourceManager().loadImage("gameplay_background.png"));
         spawner.spawnPlayer(new Point(900, 1000), Engine.getResourceManager().loadImage("player.png"));
-        spawner.spawnEnemy(new Point(400, 100), Engine.getResourceManager().loadImage("enemy.png"));
+        spawner.spawnEnemy(new Point(500, 100), Engine.getResourceManager().loadImage("enemy.png"));
 
         sr = new SpriteRendererSystem();
         is = new InputSystem(spawner);

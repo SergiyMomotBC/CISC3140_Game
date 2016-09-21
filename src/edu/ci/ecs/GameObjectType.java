@@ -5,5 +5,7 @@ public enum GameObjectType
     Background,
     Player,
     Enemy,
-    Bullet
+    Bullet,
+    Pickup,
+    Asteroid
 }
