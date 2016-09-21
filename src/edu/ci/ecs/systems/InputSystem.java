@@ -13,12 +13,16 @@ public class InputSystem implements System
 {
     public InputSystem(Spawner spawner)
     {
+        this.shootInterval = 5.0;
+        this.timer = 5.0;
         this.spawner = spawner;
     }
 
     @Override
     public void update(double dt, GameObject object)
     {
+        timer += dt;
+
         TransformComponent tc = object.getComponent(TransformComponent.class);
         MovementComponent mc = object.getComponent(MovementComponent.class);
         SpriteComponent sc = object.getComponent(SpriteComponent.class);
@@ -42,11 +46,14 @@ public class InputSystem implements System
                 sc.changeSprite(Engine.getResourceManager().loadImage("player.png"));
             }
 
-            if(input.isKeyPressedOnce(KeyEvent.VK_UP))
+            if(input.isKeyPressedOnce(KeyEvent.VK_UP) && timer >= shootInterval) {
                 spawner.spawnBullet(object, new Point(0, -600));
-
+                timer = 0.0;
+            }
         }
     }
 
-    Spawner spawner;
+    double      shootInterval;
+    double      timer;
+    Spawner     spawner;
 }
