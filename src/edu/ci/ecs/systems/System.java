@@ -1,4 +1,6 @@
-package edu.ci.ecs;
+package edu.ci.ecs.systems;
+
+import edu.ci.ecs.GameObject;
 
 import java.util.ArrayList;
 

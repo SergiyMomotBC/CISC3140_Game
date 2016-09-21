@@ -1,4 +1,8 @@
-package edu.ci.ecs;
+package edu.ci.ecs.systems;
+
+import edu.ci.ecs.GameObject;
+import edu.ci.ecs.components.SpriteComponent;
+import edu.ci.ecs.components.TransformComponent;
 
 public class TransformSystem implements System
 {

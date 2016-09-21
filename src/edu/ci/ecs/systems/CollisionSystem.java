@@ -1,4 +1,9 @@
-package edu.ci.ecs;
+package edu.ci.ecs.systems;
+
+import edu.ci.ecs.*;
+import edu.ci.ecs.components.PhysicsComponent;
+import edu.ci.ecs.components.SpriteComponent;
+import edu.ci.ecs.components.TransformComponent;
 
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
@@ -21,7 +26,7 @@ public class CollisionSystem implements System
         SpriteComponent sc = object.getComponent(SpriteComponent.class);
         PhysicsComponent pc = object.getComponent(PhysicsComponent.class);
 
-        if(tc != null && sc != null)
+        if(tc != null && sc != null && pc != null)
         {
             Rectangle2D aabb = new Rectangle(tc.getPosition(), sc.getImageSize());
 

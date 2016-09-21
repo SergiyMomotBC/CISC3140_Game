@@ -14,8 +14,25 @@ public class ListOption
         this.manager = manager;
     }
 
-    public void select() { isSelected = true; }
-    public void unselect() { isSelected = false; }
+    public void setAction(Consumer<Void> action)
+    {
+        this.action = action;
+    }
+
+    public void executeAction()
+    {
+        action.accept(null);
+    }
+
+    public void select()
+    {
+        isSelected = true;
+    }
+
+    public void unselect()
+    {
+        isSelected = false;
+    }
 
     public void render(Renderer r, Point position)
     {
@@ -38,17 +55,7 @@ public class ListOption
         r.renderText(name, new Point(x, y), 48, isSelected ? Color.white : Color.black);
     }
 
-    public void setAction(Consumer<Void> action)
-    {
-        this.action = action;
-    }
-
-    public void executeAction()
-    {
-        action.accept(null);
-    }
-
-    private ListMenu manager;
+    private ListMenu                manager;
     private String                  name;
     private boolean                 isSelected;
     private Consumer<Void>          action;

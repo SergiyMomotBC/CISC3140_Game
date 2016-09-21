@@ -1,17 +1,19 @@
-package edu.ci.ecs;
+package edu.ci.ecs.systems;
 
+import edu.ci.ecs.*;
+import edu.ci.ecs.components.MovementComponent;
+import edu.ci.ecs.components.SpriteComponent;
+import edu.ci.ecs.components.TransformComponent;
 import edu.ci.engine.Engine;
 import edu.ci.engine.InputHandler;
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 
 public class InputSystem implements System
 {
-    private final ArrayList<GameObject> objects;
-
-    public InputSystem(ArrayList<GameObject> objects){
-        this.objects = objects;
+    public InputSystem(Spawner spawner)
+    {
+        this.spawner = spawner;
     }
 
     @Override
@@ -40,20 +42,11 @@ public class InputSystem implements System
                 sc.changeSprite(Engine.getResourceManager().loadImage("player.png"));
             }
 
-            if(input.isKeyPressedOnce(KeyEvent.VK_UP)){
-                GameObject bullet = new GameObject(GameObjectType.Enemy);
-                SpriteComponent scb = new SpriteComponent(Engine.getResourceManager().loadImage("bullet.png"));
-                MovementComponent mcb = new MovementComponent(new Point(0, -500));
-                TransformComponent tcb = new TransformComponent(
-                        new Point(tc.getPosition().x + sc.getImageSize().width / 2 - scb.getImageSize().width/2,
-                                tc.getPosition().y - scb.getImageSize().height),
-                        1.0, 0.0);
-                bullet.addComponent(scb);
-                bullet.addComponent(tcb);
-                bullet.addComponent(mcb);
+            if(input.isKeyPressedOnce(KeyEvent.VK_UP))
+                spawner.spawnBullet(object, new Point(0, -600));
 
-                objects.add(bullet);
-            }
         }
     }
+
+    Spawner spawner;
 }

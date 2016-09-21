@@ -1,5 +1,7 @@
 package edu.ci.ecs;
 
+import edu.ci.ecs.components.Component;
+
 import java.util.ArrayList;
 
 public final class GameObject

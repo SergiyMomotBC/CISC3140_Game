@@ -1,6 +1,7 @@
 package edu.ci;
 
 import edu.ci.ecs.*;
+import edu.ci.ecs.systems.*;
 import edu.ci.engine.Engine;
 import edu.ci.engine.Renderer;
 import edu.ci.scenes.IGameScene;
@@ -12,32 +13,31 @@ public class TestScene implements IGameScene
     @Override
     public void onStart()
     {
-        TransformComponent t = new TransformComponent(new Point(900, 1000), 1.0, 0.0);
-        SpriteComponent s = new SpriteComponent(Engine.getResourceManager().loadImage("player.png"));
-        MovementComponent m = new MovementComponent(new Point(0, 0));
+        entitiesManager = new EntitiesManager();
+        spawner = new Spawner(entitiesManager);
 
-        player = new GameObject(GameObjectType.Player);
-        player.addComponent(t);
-        player.addComponent(s);
-        player.addComponent(m);
-
-        objects = new ArrayList<>();
-
-        objects.add(player);
+        spawner.spawnBackground(Engine.getResourceManager().loadImage("gameplay_background.png"));
+        spawner.spawnPlayer(new Point(900, 1000), Engine.getResourceManager().loadImage("player.png"));
+        spawner.spawnEnemy(new Point(400, 100), Engine.getResourceManager().loadImage("enemy.png"));
 
         sr = new SpriteRendererSystem();
-        is = new InputSystem(objects);
+        is = new InputSystem(spawner);
         ms = new MovementSystem();
         ts = new TransformSystem();
+        cs = new CollisionSystem(entitiesManager.getEntities());
     }
 
     @Override
     public void onUpdate(double deltaTime)
     {
+        entitiesManager.update();
+
+        ArrayList<GameObject> objects = entitiesManager.getEntities();
         for(int i = 0; i < objects.size(); i++) {
             is.update(deltaTime, objects.get(i));
             ms.update(deltaTime, objects.get(i));
             ts.update(deltaTime, objects.get(i));
+            cs.update(deltaTime, objects.get(i));
             sr.update(deltaTime, objects.get(i));
         }
     }
@@ -48,10 +48,12 @@ public class TestScene implements IGameScene
     @Override
     public void onClose() {}
 
-    GameObject player;
-    ArrayList<GameObject> objects;
+    EntitiesManager entitiesManager;
+    Spawner spawner;
+
     SpriteRendererSystem sr;
     InputSystem is;
     MovementSystem ms;
     TransformSystem ts;
+    CollisionSystem cs;
 }

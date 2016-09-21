@@ -1,4 +1,4 @@
-package edu.ci.ecs;
+package edu.ci.ecs.components;
 
 import java.awt.*;
 

@@ -1,4 +1,7 @@
-package edu.ci.ecs;
+package edu.ci.ecs.components;
+
+import edu.ci.ecs.CollisionRespondAction;
+import edu.ci.ecs.GameObject;
 
 public class PhysicsComponent implements Component
 {

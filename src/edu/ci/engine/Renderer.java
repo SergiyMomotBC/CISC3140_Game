@@ -35,7 +35,8 @@ public final class Renderer
 
     public void renderSprite(Image sprite, Point position, Dimension size)
     {
-        Graphics g = buffer.getDrawGraphics();
+        Graphics2D g = (Graphics2D) buffer.getDrawGraphics();
+        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g.drawImage(sprite, position.x, position.y, size.width, size.height, null);
         g.dispose();
     }

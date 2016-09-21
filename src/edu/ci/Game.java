@@ -17,11 +17,6 @@ public final class Game implements Runnable
             uniqueInstance.sceneManager.changeToScene(newScene);
     }
 
-    public static void exit()
-    {
-        uniqueInstance.terminate();
-    }
-
     public Game(String[] args)
     {
         if(wasInstantiated)
@@ -61,6 +56,7 @@ public final class Game implements Runnable
 
             sceneManager.runFrame(dt);
 
+
             if(dt < 1.0/TARGET_FPS)
                 try {
                     Thread.sleep((long)((1.0 / TARGET_FPS - dt) * 1000));
@@ -82,12 +78,12 @@ public final class Game implements Runnable
         }
     }
 
-    private GameDelegate    delegate;
-    private Thread          mainThread;
-    private JFrame          mainWindow;
-    private SceneManager    sceneManager;
-    private boolean         isRunning;
+    private GameDelegate        delegate;
+    private Thread              mainThread;
+    private JFrame              mainWindow;
+    private SceneManager        sceneManager;
+    private boolean             isRunning;
 
-    private static Game     uniqueInstance;
-    private static boolean  wasInstantiated = false;
+    private static Game         uniqueInstance;
+    private static boolean      wasInstantiated = false;
 }
