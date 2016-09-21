@@ -60,7 +60,7 @@ public class Spawner
         manager.addEntity(bg);
     }
 
-    public void spawnEnemy(Point position, Image sprite)
+    public GameObject spawnEnemy(Point position, Image sprite)
     {
         GameObject enemy = new GameObject(GameObjectType.Enemy);
 
@@ -77,6 +77,7 @@ public class Spawner
         }));
 
         manager.addEntity(enemy);
+        return enemy;
     }
 
     private EntitiesManager         manager;

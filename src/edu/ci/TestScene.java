@@ -18,19 +18,22 @@ public class TestScene implements IGameScene
 
         spawner.spawnBackground(Engine.getResourceManager().loadImage("gameplay_background.png"));
         spawner.spawnPlayer(new Point(900, 1000), Engine.getResourceManager().loadImage("player.png"));
-        spawner.spawnEnemy(new Point(500, 100), Engine.getResourceManager().loadImage("enemy.png"));
 
         sr = new SpriteRendererSystem();
         is = new InputSystem(spawner);
         ms = new MovementSystem();
         ts = new TransformSystem();
         cs = new CollisionSystem(entitiesManager.getEntities());
+
+        ebm = new EnemyBoardManager(spawner, new Point(300, 100), 2.0);
     }
 
     @Override
     public void onUpdate(double deltaTime)
     {
         entitiesManager.update();
+
+        ebm.update(deltaTime);
 
         ArrayList<GameObject> objects = entitiesManager.getEntities();
         for(int i = 0; i < objects.size(); i++) {
@@ -56,4 +59,5 @@ public class TestScene implements IGameScene
     MovementSystem ms;
     TransformSystem ts;
     CollisionSystem cs;
+    EnemyBoardManager ebm;
 }

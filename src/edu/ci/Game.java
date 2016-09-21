@@ -46,23 +46,18 @@ public final class Game implements Runnable
         isRunning = true;
 
         long currentTime, previousTime = System.nanoTime();
-        double dt;
+        double accumTime = 0;
 
         while(isRunning)
         {
             currentTime = System.nanoTime();
-            dt = (currentTime - previousTime) / 1.0e9;
+            accumTime += (currentTime - previousTime) / 1.0e9;
             previousTime = currentTime;
 
-            sceneManager.runFrame(dt);
-
-
-            if(dt < 1.0/TARGET_FPS)
-                try {
-                    Thread.sleep((long)((1.0 / TARGET_FPS - dt) * 1000));
-                } catch (InterruptedException e) {
-                    delegate.reportFatalError("Thread execution error...");
-                }
+            while(accumTime > 1.0/TARGET_FPS) {
+                sceneManager.runFrame(1.0/TARGET_FPS);
+                accumTime -= 1.0/TARGET_FPS;
+            }
         }
     }
 
