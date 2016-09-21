@@ -25,7 +25,7 @@ public class TestScene implements IGameScene
         ts = new TransformSystem();
         cs = new CollisionSystem(entitiesManager.getEntities());
 
-        ebm = new EnemyBoardManager(spawner, new Point(300, 100), 2.0);
+        ebm = new EnemyBoardManager(spawner, new Point(300, 100), 1.5);
     }
 
     @Override
@@ -53,7 +53,6 @@ public class TestScene implements IGameScene
 
     EntitiesManager entitiesManager;
     Spawner spawner;
-
     SpriteRendererSystem sr;
     InputSystem is;
     MovementSystem ms;
