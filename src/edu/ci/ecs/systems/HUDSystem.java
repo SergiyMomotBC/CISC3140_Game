@@ -4,7 +4,6 @@ import edu.ci.ecs.GameObject;
 import edu.ci.ecs.GameObjectType;
 import edu.ci.ecs.components.HealthComponent;
 import edu.ci.engine.Engine;
-
 import java.awt.*;
 
 public class HUDSystem implements System
