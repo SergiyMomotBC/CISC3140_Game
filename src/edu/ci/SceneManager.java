@@ -2,12 +2,19 @@ package edu.ci;
 
 import edu.ci.engine.Engine;
 import edu.ci.scenes.IGameScene;
-
 import java.awt.event.KeyEvent;
 import java.util.Stack;
 
+/**
+ * Manages game scenes.
+ */
 public final class SceneManager
 {
+    /**
+     * Creates a scene manager with an initial scene.
+     *
+     * @param initialScene  Initial scene to be displayed
+     */
     public SceneManager(IGameScene initialScene)
     {
         scenes = new Stack<IGameScene>();

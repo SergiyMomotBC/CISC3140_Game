@@ -24,6 +24,8 @@ public class TestScene implements IGameScene
         ms = new MovementSystem();
         ts = new TransformSystem();
         cs = new CollisionSystem(entitiesManager.getEntities());
+        hs = new HealthSystem();
+        huds = new HUDSystem();
 
         ebm = new EnemyBoardManager(spawner, new Point(300, 100), 1.5);
     }
@@ -42,6 +44,8 @@ public class TestScene implements IGameScene
             ts.update(deltaTime, objects.get(i));
             cs.update(deltaTime, objects.get(i));
             sr.update(deltaTime, objects.get(i));
+            hs.update(deltaTime, objects.get(i));
+            huds.update(deltaTime, objects.get(i));
         }
     }
 
@@ -55,6 +59,8 @@ public class TestScene implements IGameScene
     Spawner spawner;
     SpriteRendererSystem sr;
     InputSystem is;
+    HealthSystem hs;
+    HUDSystem huds;
     MovementSystem ms;
     TransformSystem ts;
     CollisionSystem cs;

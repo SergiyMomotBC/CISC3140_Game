@@ -23,8 +23,13 @@ public class TransformSystem implements System
                         tc.getPosition().x = 1920 - sc.getImageSize().width;
                     break;
 
-                case Bullet:
+                case Bullet_Player:
                     if(tc.getPosition().y < 0)
+                        object.destroy();
+                    break;
+
+                case Bullet_Enemy:
+                    if(tc.getPosition().y > 1080)
                         object.destroy();
             }
         }

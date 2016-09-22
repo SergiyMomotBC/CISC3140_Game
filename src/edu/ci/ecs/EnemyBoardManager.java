@@ -4,6 +4,7 @@ import edu.ci.ecs.components.TransformComponent;
 import edu.ci.engine.Engine;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class EnemyBoardManager
 {
@@ -34,6 +35,7 @@ public class EnemyBoardManager
         this.moveInterval = moveInterval;
         this.timer = 0.0;
         this.direction = 1;
+        this.shootTimer = 0.0;
 
         for(int i = 0; i < WIDTH; i++)
             for(int j = 0; j < HEIGHT; j++)
@@ -53,10 +55,11 @@ public class EnemyBoardManager
         }
 
         timer += dt;
+        shootTimer += dt;
 
         if(timer >= moveInterval)
         {
-            if((direction < 0 && boardRect.getX() < SPEED) ||
+            if((direction < 0 && boardRect.getX() < 70) ||
                (direction > 0 && boardRect.getX() + boardRect.getWidth() >= 1870))
             {
                 for (int i = 0; i < enemies.size(); i++) {
@@ -82,6 +85,13 @@ public class EnemyBoardManager
 
             timer = 0.0;
         }
+        else if(shootTimer > 1.0)
+        {
+            Random r = new Random();
+            int enemyID = r.nextInt(enemies.size());
+            spawner.spawnBullet(enemies.get(enemyID), new Point(0, 600));
+            shootTimer = 0.0;
+        }
 
         for(int i = 0; i < enemies.size(); i++)
             if(enemies.get(i).shouldBeDestroyed())
@@ -92,6 +102,7 @@ public class EnemyBoardManager
     private Rectangle               boardRect;
     private short                   direction;
     private double                  timer;
+    private double                  shootTimer;
     private double                  moveInterval;
     private Point                   position;
     private ArrayList<GameObject>   enemies;
