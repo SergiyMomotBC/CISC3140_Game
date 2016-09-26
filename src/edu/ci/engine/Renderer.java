@@ -33,6 +33,14 @@ public final class Renderer
         g.dispose();
     }
 
+    public void renderTintedBackground()
+    {
+        Graphics2D g = (Graphics2D) buffer.getDrawGraphics();
+        g.setColor(new Color(0.0f, 0.0f, 0.0f, 0.7f));
+        g.fillRect(0, 0, 1920, 1080);
+        g.dispose();
+    }
+
     public void renderSprite(Image sprite, Point position, Dimension size)
     {
         Graphics2D g = (Graphics2D) buffer.getDrawGraphics();

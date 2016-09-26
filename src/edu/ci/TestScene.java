@@ -6,7 +6,6 @@ import edu.ci.engine.Engine;
 import edu.ci.engine.Renderer;
 import edu.ci.scenes.IGameScene;
 import edu.ci.scenes.PauseScene;
-
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -31,11 +30,31 @@ public class TestScene implements IGameScene
         huds = new HUDSystem();
 
         ebm = new EnemyBoardManager(spawner, new Point(300, 100), 1.5);
+
+        justStarted = true;
+        timer = 0.0;
+        preparationImage = Engine.getResourceManager().loadImage("text_ready.png");
     }
 
     @Override
     public void onUpdate(double deltaTime)
     {
+        if(justStarted) {
+            timer += deltaTime;
+
+            if( timer >= 1.5 )
+                preparationImage = Engine.getResourceManager().loadImage("text_go.png");
+
+            if( timer >= 3.0)
+                justStarted = false;
+
+            ArrayList<GameObject> objects = entitiesManager.getEntities();
+            for(int i = 0; i < objects.size(); i++)
+                sr.update(deltaTime, objects.get(i));
+
+            return;
+        }
+
         if(Engine.getInputHandler().isKeyPressedOnce(KeyEvent.VK_SPACE))
             Game.getSceneManager().pushScene(new PauseScene(Engine.getResourceManager().loadImage("gameplay_background.png")));
 
@@ -56,10 +75,20 @@ public class TestScene implements IGameScene
     }
 
     @Override
-    public void onRender(Renderer r) {}
+    public void onRender(Renderer r)
+    {
+        if(justStarted) {
+            r.renderTintedBackground();
+            r.renderSprite(preparationImage, new Point(timer < 1.5 ? 850 : 900, 500));
+        }
+    }
 
     @Override
     public void onClose() {}
+
+    private boolean     justStarted;
+    private double      timer;
+    private Image       preparationImage;
 
     EntitiesManager entitiesManager;
     Spawner spawner;

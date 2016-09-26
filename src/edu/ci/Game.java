@@ -2,6 +2,7 @@ package edu.ci;
 
 import edu.ci.scenes.GameOverScene;
 import edu.ci.scenes.IGameScene;
+import edu.ci.scenes.MainMenuScene;
 import javafx.scene.Scene;
 
 import javax.swing.*;
@@ -41,7 +42,7 @@ public final class Game implements Runnable
 
         delegate.initialize(mainWindow);
 
-        sceneManager = new SceneManager(new TestScene());
+        sceneManager = new SceneManager(new MainMenuScene());
 
         //create and start game's main thread
         mainThread = new Thread(this);
