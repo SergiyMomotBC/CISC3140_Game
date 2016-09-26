@@ -24,7 +24,28 @@ public class HUDSystem implements System
 
         if(sc != null)
         {
+            Image number = Engine.getResourceManager().loadImage("numeral0.png");
 
+            String scoreStr = String.valueOf(sc.getScore());
+
+            int pos = 1745;
+            for(int i = 0; i < 6 - scoreStr.length(); i++) {
+                Engine.getRenderer().renderSprite(number,
+                        new Point(pos, 23),
+                        new Dimension(number.getWidth(null), number.getHeight(null)));
+
+                pos += 25;
+            }
+
+            for(int i = 0; i < scoreStr.length(); i++) {
+                Engine.getRenderer().renderSprite(
+                        Engine.getResourceManager().loadImage("numeral" + scoreStr.charAt(i) + ".png"),
+                        new Point(pos, 23),
+                        new Dimension(number.getWidth(null), number.getHeight(null))
+                );
+
+                pos += 25;
+            }
         }
     }
 

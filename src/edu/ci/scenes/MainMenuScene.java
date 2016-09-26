@@ -11,7 +11,7 @@ public class MainMenuScene implements IGameScene
     public void onStart()
     {
         ListMenu.OptionInfo[] info =
-                { new ListMenu.OptionInfo("Play", null),
+                {new ListMenu.OptionInfo("Play", null),
                   new ListMenu.OptionInfo("Leaderboard", null),
                   new ListMenu.OptionInfo("How to play", null),
                   new ListMenu.OptionInfo("Credits", null),

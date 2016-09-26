@@ -19,6 +19,7 @@ public class Spawner
         player.addComponent(new SpriteComponent(sprite));
         player.addComponent(new MovementComponent(new Point(0, 0)));
         player.addComponent(new HealthComponent(3));
+        player.addComponent(new ScoreComponent());
         player.addComponent(new PhysicsComponent(new CollisionRespondAction() {
             @Override
             public void respondToCollisionWith(GameObject entity) {
