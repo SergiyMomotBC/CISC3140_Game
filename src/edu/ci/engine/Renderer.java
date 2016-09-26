@@ -41,6 +41,11 @@ public final class Renderer
         g.dispose();
     }
 
+    public void renderSprite(Image sprite, Point position)
+    {
+        renderSprite(sprite, position, new Dimension(sprite.getWidth(null), sprite.getHeight(null)));
+    }
+
     public void renderText(String text, Point position, int fontSize, Color color)
     {
         Graphics2D g = (Graphics2D) buffer.getDrawGraphics();
@@ -54,16 +59,6 @@ public final class Renderer
     public void presentFrame()
     {
         buffer.show();
-    }
-
-    public Image getSnapshot()
-    {
-        BufferedImage bi = new BufferedImage(resolution.width, resolution.hashCode(), BufferedImage.TYPE_INT_RGB);
-        Graphics2D g = bi.createGraphics();
-        buffer.show();
-        frame.paint(g);
-        g.dispose();
-        return bi;
     }
 
     private Canvas              frame;

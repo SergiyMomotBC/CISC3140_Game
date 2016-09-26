@@ -26,6 +26,7 @@ public class Spawner
                 if(entity.getType() == GameObjectType.Bullet_Enemy){
                     entity.destroy();
                     player.getComponent(HealthComponent.class).applyDamage(1);
+                    player.getComponent(TransformComponent.class).moveTo(new Point(900, 1000));
                 }
             }
         }));

@@ -40,11 +40,8 @@ public final class SceneManager
         if(Engine.getInputHandler().isKeyPressedOnce(KeyEvent.VK_ESCAPE))
             System.exit(0);
 
-        Engine.getRenderer().prepareFrame();
-        if(currentScene != null) {
-            currentScene.onUpdate(deltaTime);
-            currentScene.onRender(Engine.getRenderer());
-        }
+        currentScene.onUpdate(deltaTime);
+        currentScene.onRender(Engine.getRenderer());
         Engine.getRenderer().presentFrame();
     }
 
