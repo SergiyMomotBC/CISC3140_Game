@@ -1,6 +1,9 @@
 package edu.ci;
 
+import edu.ci.scenes.GameOverScene;
 import edu.ci.scenes.IGameScene;
+import javafx.scene.Scene;
+
 import javax.swing.*;
 
 /**
@@ -10,18 +13,9 @@ public final class Game implements Runnable
 {
     public final static int TARGET_FPS = 60;
 
-    /**
-     * Presents a new scene to the user.
-     *
-     * @param newScene      Scene to be presented
-     * @param pauseCurrent  To save the current scene for later restoring
-     */
-    public static void presentScene(IGameScene newScene, boolean pauseCurrent)
+    public static SceneManager getSceneManager()
     {
-        if(pauseCurrent)
-            uniqueInstance.sceneManager.pushScene(newScene);
-        else
-            uniqueInstance.sceneManager.changeToScene(newScene);
+        return uniqueInstance.sceneManager;
     }
 
     /**

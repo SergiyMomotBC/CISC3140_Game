@@ -5,7 +5,10 @@ import edu.ci.ecs.systems.*;
 import edu.ci.engine.Engine;
 import edu.ci.engine.Renderer;
 import edu.ci.scenes.IGameScene;
+import edu.ci.scenes.PauseScene;
+
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 public class TestScene implements IGameScene
@@ -33,6 +36,9 @@ public class TestScene implements IGameScene
     @Override
     public void onUpdate(double deltaTime)
     {
+        if(Engine.getInputHandler().isKeyPressedOnce(KeyEvent.VK_SPACE))
+            Game.getSceneManager().pushScene(new PauseScene(Engine.getResourceManager().loadImage("gameplay_background.png")));
+
         entitiesManager.update();
 
         ebm.update(deltaTime);
