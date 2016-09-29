@@ -1,6 +1,6 @@
 package edu.ci.ecs;
 
-import edu.ci.Game;
+import edu.ci.ecs.components.ScoreComponent;
 
 import java.util.ArrayList;
 
@@ -14,8 +14,21 @@ public class EntitiesManager
     public void update()
     {
         for(int i = 0; i < entities.size(); i++)
-            if(entities.get(i).shouldBeDestroyed())
+            if(entities.get(i).shouldBeDestroyed()) {
+                if(entities.get(i).getType() == GameObjectType.Enemy) {
+                    ScoreComponent sc = player.getComponent(ScoreComponent.class);
+                    if(sc != null)
+                        sc.increaseScoreBy(100);
+                }
+
                 entities.remove(i);
+            }
+
+
+    }
+
+    public void assignPlayer(GameObject player) {
+        this.player = player;
     }
 
     public ArrayList<GameObject> getAllObjectsOfType(GameObjectType type)
@@ -45,4 +58,5 @@ public class EntitiesManager
     }
 
     private ArrayList<GameObject> entities;
+    private GameObject player;
 }

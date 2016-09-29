@@ -31,6 +31,22 @@ public final class InputHandler implements KeyListener
             return false;
     }
 
+    public char getLetterKeyPressed()
+    {
+        for(int c = 48; c <= 57; c++)
+            if(isKeyPressedOnce(c))
+                return (char) c;
+
+        for(int c = 65; c <= 90; c++)
+            if(isKeyPressedOnce(c))
+                return (char) c;
+
+        if(isKeyPressedOnce(95))
+            return (char) 95;
+
+        return '\0';
+    }
+
     public boolean isKeyReleased(int key)
     {
         return keyStates[key].event == 2;

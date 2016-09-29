@@ -1,4 +1,4 @@
-package edu.ci;
+package edu.ci.engine;
 
 import edu.ci.engine.Engine;
 import edu.ci.scenes.IGameScene;
@@ -37,7 +37,7 @@ public final class SceneManager
     {
         Engine.getInputHandler().pollKeyboard();
 
-        if(Engine.getInputHandler().isKeyPressedOnce(KeyEvent.VK_ESCAPE))
+        if(Engine.getInputHandler().isKeyPressedOnce(KeyEvent.VK_Q))
             System.exit(0);
 
         currentScene.onUpdate(deltaTime);

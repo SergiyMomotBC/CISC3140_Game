@@ -1,7 +1,6 @@
 package edu.ci.scenes;
 
 import edu.ci.Game;
-import edu.ci.TestScene;
 import edu.ci.engine.Engine;
 import edu.ci.engine.Renderer;
 import edu.ci.gui.ListMenu;
@@ -13,9 +12,9 @@ public class MainMenuScene implements IGameScene
     public void onStart()
     {
         ListMenu.OptionInfo[] info =
-                {new ListMenu.OptionInfo("Play", (Void) -> Game.getSceneManager().changeToScene(new TestScene())),
-                  new ListMenu.OptionInfo("Leaderboard", null),
-                  new ListMenu.OptionInfo("How to play", null),
+                {new ListMenu.OptionInfo("Play", (Void) -> Game.getSceneManager().changeToScene(new GameplayScene())),
+                  new ListMenu.OptionInfo("Leaderboard", (Void) -> Game.getSceneManager().pushScene(new LeaderboardScene())),
+                  new ListMenu.OptionInfo("How to play", (Void) -> Game.getSceneManager().pushScene(new HowToPlayScene())),
                   new ListMenu.OptionInfo("Credits", null),
                   new ListMenu.OptionInfo("Exit", (Void) -> System.exit(0))
                 };

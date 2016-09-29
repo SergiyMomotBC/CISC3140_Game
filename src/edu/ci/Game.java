@@ -1,9 +1,8 @@
 package edu.ci;
 
+import edu.ci.engine.SceneManager;
 import edu.ci.scenes.GameOverScene;
-import edu.ci.scenes.IGameScene;
 import edu.ci.scenes.MainMenuScene;
-import javafx.scene.Scene;
 
 import javax.swing.*;
 

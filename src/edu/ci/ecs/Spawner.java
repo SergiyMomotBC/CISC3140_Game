@@ -32,6 +32,7 @@ public class Spawner
         }));
 
         manager.addEntity(player);
+        manager.assignPlayer(player);
     }
 
     public void spawnBullet(GameObject spawner, Point velocity)

@@ -1,11 +1,8 @@
-package edu.ci;
+package edu.ci.engine;
 
 import java.io.*;
 import java.util.ArrayList;
 
-/**
- * Created by sergi on 026, 9/26/2016.
- */
 public class LeaderboardManager
 {
     public class Entry
@@ -31,9 +28,11 @@ public class LeaderboardManager
 
             String line;
             while((line = reader.readLine()) != null) {
+                if(line.isEmpty())
+                    continue;
                 int pos = line.indexOf(" ");
-                String name = line.substring(0, pos - 1);
-                int score = Integer.valueOf(line.substring(pos + 1, line.length() - pos - 1));
+                String name = line.substring(0, pos);
+                int score = Integer.valueOf(line.substring(pos + 1, line.length()));
                 entries.add(new Entry(name, score));
             }
 

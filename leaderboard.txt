@@ -1,0 +1,5 @@
+Gross 10000
+Dexter 8000
+Jones 6000
+Levitan 3000
+Zwick 1000
