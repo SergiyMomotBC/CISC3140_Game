@@ -1,9 +1,7 @@
 package edu.ci;
 
 import edu.ci.engine.SceneManager;
-import edu.ci.scenes.GameOverScene;
 import edu.ci.scenes.MainMenuScene;
-
 import javax.swing.*;
 
 /**
@@ -94,7 +92,6 @@ public final class Game implements Runnable
     private JFrame              mainWindow;
     private SceneManager        sceneManager;
     private boolean             isRunning;
-
     private static Game         uniqueInstance;
     private static boolean      wasInstantiated = false;
 }
