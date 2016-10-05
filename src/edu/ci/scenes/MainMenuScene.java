@@ -15,7 +15,6 @@ public class MainMenuScene implements IGameScene
                 {new ListMenu.OptionInfo("Play", (Void) -> Game.getSceneManager().changeToScene(new GameplayScene())),
                   new ListMenu.OptionInfo("Leaderboard", (Void) -> Game.getSceneManager().pushScene(new LeaderboardScene())),
                   new ListMenu.OptionInfo("How to play", (Void) -> Game.getSceneManager().pushScene(new HowToPlayScene())),
-                  new ListMenu.OptionInfo("Credits", null),
                   new ListMenu.OptionInfo("Exit", (Void) -> System.exit(0))
                 };
 
